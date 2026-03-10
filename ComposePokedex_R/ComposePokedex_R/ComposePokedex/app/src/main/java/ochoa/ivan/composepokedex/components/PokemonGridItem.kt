@@ -2,6 +2,7 @@ package ochoa.ivan.composepokedex.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,10 +25,11 @@ import ochoa.ivan.composepokedex.ui.theme.PurpleGrey40
 import ochoa.ivan.composepokedex.ui.theme.OffWhite
 
 @Composable
-fun PokemonGridItem(pokemon: Pokemon) {
+fun PokemonGridItem(pokemon: Pokemon, onNavigationDetail:(id:Int) ->Unit) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.background(OffWhite, CutCornerShape(0))
+
+        modifier = Modifier.clickable(onClick ={ onNavigationDetail(pokemon.number)})
     ) {
         Box() {
             Image(
@@ -51,12 +53,12 @@ fun PokemonGridItem(pokemon: Pokemon) {
             }
 
         }
-        Text(text = "${pokemon.name}", textAlign = TextAlign.Center, fontSize = 12.sp)
+        Text(text = pokemon.name, textAlign = TextAlign.Center, fontSize = 12.sp)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun PokemonItemPreview() {
-    PokemonGridItem(getOnePokemon())
+    PokemonGridItem(getOnePokemon(), {id->{}})
 }

@@ -3,6 +3,7 @@ package ochoa.ivan.composepokedex.utilities
 import androidx.compose.ui.graphics.Color
 import ochoa.ivan.composepokedex.domain.Pokemon
 import ochoa.ivan.composepokedex.ui.theme.Bug
+import ochoa.ivan.composepokedex.ui.theme.DarkGray
 import ochoa.ivan.composepokedex.ui.theme.Electric
 import ochoa.ivan.composepokedex.ui.theme.Fairy
 import ochoa.ivan.composepokedex.ui.theme.Fight
@@ -11,6 +12,7 @@ import ochoa.ivan.composepokedex.ui.theme.Flying
 import ochoa.ivan.composepokedex.ui.theme.Ghost
 import ochoa.ivan.composepokedex.ui.theme.Ground
 import ochoa.ivan.composepokedex.ui.theme.Normal
+import ochoa.ivan.composepokedex.ui.theme.OffWhite
 import ochoa.ivan.composepokedex.ui.theme.Poison
 import ochoa.ivan.composepokedex.ui.theme.Psych
 import ochoa.ivan.composepokedex.ui.theme.Rock
@@ -53,13 +55,13 @@ fun getColorByType(pokemon: Pokemon): Pair<Color, Color> {
         pokemon.type.lowercase().contains("poison") -> color = Poison
         pokemon.type.lowercase().contains("ground") -> color = Ground
         pokemon.type.lowercase().contains("rock") -> color = Rock
-
         pokemon.type.lowercase().contains("flying") -> {
             color = Flying
+            dark = false
         }
 
         else -> color = Normal
     }
 
-    return Pair(color, color)
+    return Pair(color, if(dark) OffWhite else DarkGray)
 }

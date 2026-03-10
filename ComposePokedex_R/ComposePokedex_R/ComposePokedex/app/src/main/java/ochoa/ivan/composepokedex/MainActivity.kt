@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import ochoa.ivan.composepokedex.domain.Pokemon
+import ochoa.ivan.composepokedex.navigation.MyApp
 import ochoa.ivan.composepokedex.screens.PokemonDetailScreen
 import ochoa.ivan.composepokedex.ui.theme.ComposePokedexTheme
 
@@ -31,13 +32,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ComposePokedexTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    PokemonDetailScreen(
-                        pokemon,
-                        modifier = Modifier.padding(innerPadding)
-                    )
+              MyApp()
+
                 }
             }
         }
     }
-}

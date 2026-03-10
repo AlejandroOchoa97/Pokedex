@@ -134,3 +134,7 @@ fun showAllPokemons(): List<Pokemon> {
 fun getOnePokemon(): Pokemon{
     return pokemonList.get((0..9).random())
 }
+
+fun getPokemon(id:Int):Pokemon{
+    return pokemonList.filter { pokemon -> pokemon.number == id}.get(0)
+}

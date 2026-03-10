@@ -13,7 +13,7 @@ import ochoa.ivan.composepokedex.domain.Pokemon
 import ochoa.ivan.composepokedex.dummies.showAllPokemons
 
 @Composable
-fun PokedexMenuScreen(pokemonList: List<Pokemon>) {
+fun PokedexMenuScreen(pokemonList: List<Pokemon>, onNavigationDetail:(id:Int) ->Unit) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
         contentPadding = PaddingValues(horizontal = 5.dp, 20.dp),
@@ -21,7 +21,7 @@ fun PokedexMenuScreen(pokemonList: List<Pokemon>) {
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         items(pokemonList) { pokemon ->
-            PokemonGridItem(pokemon)
+            PokemonGridItem(pokemon, onNavigationDetail)
         }
     }
 }
@@ -29,5 +29,5 @@ fun PokedexMenuScreen(pokemonList: List<Pokemon>) {
 @Preview(showBackground = true)
 @Composable
 fun PokedexMenuScreenPreview() {
-    PokedexMenuScreen(showAllPokemons())
+    PokedexMenuScreen(showAllPokemons(), onNavigationDetail = {id->{}})
 }
